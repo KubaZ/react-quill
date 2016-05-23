@@ -37,7 +37,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "quill": "^0.20.1"
+    "quill": "git+https://github.com/KubaZ/quill.git#feature/beta-image-align"
   },
   "peerDependencies": {
     "react": ">=0.14.0"

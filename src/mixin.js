@@ -21,9 +21,11 @@ var QuillMixin = {
 		var unprivilegedEditor = this.makeUnprivilegedEditor(editor);
 
 		editor.on('text-change', function(delta, source) {
+			var doc = document.implementation.createHTMLDocument('');
+		    doc.documentElement.innerHTML = editor.getText();
 			if (this.onEditorChange) {
 				this.onEditorChange(
-					editor.getHTML(), delta, source,
+					doc.body.innerHTML, delta, source,
 					unprivilegedEditor
 				);
 			}
@@ -55,7 +57,7 @@ var QuillMixin = {
 	*/
 	setEditorContents: function(editor, value) {
 		var sel = editor.getSelection();
-		editor.setHTML(value || '');
+		editor.setText(value || '');
 		if (sel) this.setEditorSelection(editor, sel);
 	},
 
@@ -79,7 +81,6 @@ var QuillMixin = {
 		return {
 			getLength:    function(){ e.getLength.apply(e, arguments); },
 			getText:      function(){ e.getText.apply(e, arguments); },
-			getHTML:      function(){ e.getHTML.apply(e, arguments); },
 			getContents:  function(){ e.getContents.apply(e, arguments); },
 			getSelection: function(){ e.getSelection.apply(e, arguments); },
 			getBounds:    function(){ e.getBounds.apply(e, arguments); },

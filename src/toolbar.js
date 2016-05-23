@@ -57,7 +57,9 @@ var defaultItems = [
 	]},
 
 	{ label:'Blocks', type:'group', items: [
-		{ type:'image', label:'Image' }
+		{ type:'image', label:'Image' },
+		{ type:'image-align', label:'Image align left', value: 'left' },
+		{ type:'image-align', label:'Image align right', value: 'right' }
 	]}
 
 ];
@@ -146,6 +148,7 @@ var QuillToolbar = React.createClass({
 			case 'link':
 			case 'list':
 			case 'image':
+			case 'image-align':
 				return this.renderButton(item, key);
 			default:
 				return this.renderAction(item, key);

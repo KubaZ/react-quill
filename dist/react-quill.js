@@ -442,9 +442,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			{ type:'list', value:'ordered' }
 		]},
 	
-		// { label:'Blocks', type:'group', items: [
-		// 	{ type:'image', label:'Image' }
-		// ]}
+		{ label:'Blocks', type:'group', items: [
+			{ type:'image', label:'Image' },
+			{ type:'image-align', label:'Image align left', value: 'left' },
+			{ type:'image-align', label:'Image align right', value: 'right' }
+		]}
 	
 	];
 	
@@ -531,6 +533,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				case 'strike':
 				case 'link':
 				case 'list':
+				case 'image':
+				case 'image-align':
 					return this.renderButton(item, key);
 				default:
 					return this.renderAction(item, key);
@@ -675,6 +679,12 @@ return /******/ (function(modules) { // webpackBootstrap
   \*******************************/
 /***/ function(module, exports) {
 
+	/*!
+	 * Quill Editor v1.0.0-beta.2
+	 * https://quilljs.com/
+	 * Copyright (c) 2014, Jason Chen
+	 * Copyright (c) 2013, salesforce.com
+	 */
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(typeof exports === 'object' && typeof module === 'object')
 			module.exports = factory();
@@ -682,50 +692,47 @@ return /******/ (function(modules) { // webpackBootstrap
 			define([], factory);
 		else if(typeof exports === 'object')
 			exports["Quill"] = factory();
-		else {
+		else
 			root["Quill"] = factory();
-			console.log(root);
-			console.log(root["Quill"]);
-		}
 	})(this, function() {
 	return /******/ (function(modules) { // webpackBootstrap
 	/******/ 	// The module cache
 	/******/ 	var installedModules = {};
-	/******/
+	
 	/******/ 	// The require function
 	/******/ 	function __webpack_require__(moduleId) {
-	/******/
+	
 	/******/ 		// Check if module is in cache
 	/******/ 		if(installedModules[moduleId])
 	/******/ 			return installedModules[moduleId].exports;
-	/******/
+	
 	/******/ 		// Create a new module (and put it into the cache)
 	/******/ 		var module = installedModules[moduleId] = {
 	/******/ 			exports: {},
 	/******/ 			id: moduleId,
 	/******/ 			loaded: false
 	/******/ 		};
-	/******/
+	
 	/******/ 		// Execute the module function
 	/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-	/******/
+	
 	/******/ 		// Flag the module as loaded
 	/******/ 		module.loaded = true;
-	/******/
+	
 	/******/ 		// Return the exports of the module
 	/******/ 		return module.exports;
 	/******/ 	}
-	/******/
-	/******/
+	
+	
 	/******/ 	// expose the modules object (__webpack_modules__)
 	/******/ 	__webpack_require__.m = modules;
-	/******/
+	
 	/******/ 	// expose the module cache
 	/******/ 	__webpack_require__.c = installedModules;
-	/******/
+	
 	/******/ 	// __webpack_public_path__
 	/******/ 	__webpack_require__.p = "";
-	/******/
+	
 	/******/ 	// Load entry module and return exports
 	/******/ 	return __webpack_require__(0);
 	/******/ })
@@ -773,85 +780,87 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _size = __webpack_require__(56);
 	
-		var _bold = __webpack_require__(57);
+		var _imageAlign = __webpack_require__(57);
+	
+		var _bold = __webpack_require__(58);
 	
 		var _bold2 = _interopRequireDefault(_bold);
 	
-		var _italic = __webpack_require__(58);
+		var _italic = __webpack_require__(59);
 	
 		var _italic2 = _interopRequireDefault(_italic);
 	
-		var _link = __webpack_require__(59);
+		var _link = __webpack_require__(60);
 	
 		var _link2 = _interopRequireDefault(_link);
 	
-		var _script = __webpack_require__(60);
+		var _script = __webpack_require__(61);
 	
 		var _script2 = _interopRequireDefault(_script);
 	
-		var _strike = __webpack_require__(61);
+		var _strike = __webpack_require__(62);
 	
 		var _strike2 = _interopRequireDefault(_strike);
 	
-		var _underline = __webpack_require__(62);
+		var _underline = __webpack_require__(63);
 	
 		var _underline2 = _interopRequireDefault(_underline);
 	
-		var _formula = __webpack_require__(63);
+		var _formula = __webpack_require__(64);
 	
 		var _formula2 = _interopRequireDefault(_formula);
 	
-		var _image = __webpack_require__(64);
+		var _image = __webpack_require__(65);
 	
 		var _image2 = _interopRequireDefault(_image);
 	
-		var _video = __webpack_require__(65);
+		var _video = __webpack_require__(66);
 	
 		var _video2 = _interopRequireDefault(_video);
 	
-		var _code = __webpack_require__(66);
+		var _code = __webpack_require__(67);
 	
-		var _imageTooltip = __webpack_require__(67);
+		var _imageTooltip = __webpack_require__(68);
 	
 		var _imageTooltip2 = _interopRequireDefault(_imageTooltip);
 	
-		var _linkTooltip = __webpack_require__(68);
+		var _linkTooltip = __webpack_require__(69);
 	
 		var _linkTooltip2 = _interopRequireDefault(_linkTooltip);
 	
-		var _toolbar = __webpack_require__(70);
+		var _syntax = __webpack_require__(71);
+	
+		var _syntax2 = _interopRequireDefault(_syntax);
+	
+		var _toolbar = __webpack_require__(72);
 	
 		var _toolbar2 = _interopRequireDefault(_toolbar);
 	
-		var _codeHighlighter = __webpack_require__(71);
-	
-		var _codeHighlighter2 = _interopRequireDefault(_codeHighlighter);
-	
-		var _icons = __webpack_require__(72);
+		var _icons = __webpack_require__(73);
 	
 		var _icons2 = _interopRequireDefault(_icons);
 	
-		var _picker = __webpack_require__(100);
+		var _picker = __webpack_require__(101);
 	
 		var _picker2 = _interopRequireDefault(_picker);
 	
-		var _colorPicker = __webpack_require__(102);
+		var _colorPicker = __webpack_require__(103);
 	
 		var _colorPicker2 = _interopRequireDefault(_colorPicker);
 	
-		var _iconPicker = __webpack_require__(103);
+		var _iconPicker = __webpack_require__(104);
 	
 		var _iconPicker2 = _interopRequireDefault(_iconPicker);
 	
-		var _tooltip = __webpack_require__(69);
+		var _tooltip = __webpack_require__(70);
 	
 		var _tooltip2 = _interopRequireDefault(_tooltip);
 	
-		var _bubble = __webpack_require__(104);
+		var _bubble = __webpack_require__(105);
 	
 		var _bubble2 = _interopRequireDefault(_bubble);
 	
-		var _snow = __webpack_require__(106);
+		var _snow = __webpack_require__(107);
 	
 		var _snow2 = _interopRequireDefault(_snow);
 	
@@ -859,6 +868,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		_core2.default.register({
 		  'formats/align': _align.AlignClass,
+		  'formats/image-align': _imageAlign.ImageAlignClass,
 		  'formats/direction': _direction.DirectionClass,
 		  'formats/indent': _indent.IndentClass,
 	
@@ -868,7 +878,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  'formats/size': _size.SizeClass,
 	
 		  'formats/blockquote': _blockquote2.default,
-		  'formats/code-block': _codeHighlighter.CodeBlock,
+		  'formats/code-block': _syntax.CodeBlock,
 		  'formats/header': _header2.default,
 		  'formats/list': _list2.default,
 	
@@ -884,12 +894,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		  'formats/image': _image2.default,
 		  'formats/video': _video2.default,
 	
-		  'formats/code-block/token': _codeHighlighter.CodeToken,
+		  'formats/code-block/token': _syntax.CodeToken,
 		  'formats/list/item': _list.ListItem,
 	
-		  'modules/code-highlighter': _codeHighlighter2.default,
 		  'modules/image-tooltip': _imageTooltip2.default,
 		  'modules/link-tooltip': _linkTooltip2.default,
+		  'modules/syntax': _syntax2.default,
 		  'modules/toolbar': _toolbar2.default,
 	
 		  'themes/bubble': _bubble2.default,
@@ -2563,9 +2573,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		    if (options.debug) {
 		      Quill.debug(options.debug);
 		    }
-		    this.root.classList.toggle('ql-empty', this.getLength() <= 1);
+		    this.root.classList.toggle('ql-blank', this.editor.isBlank());
 		    this.emitter.on(_emitter2.default.events.TEXT_CHANGE, function (delta) {
-		      _this2.root.classList.toggle('ql-empty', _this2.getLength() <= 1);
+		      _this2.root.classList.toggle('ql-blank', _this2.editor.isBlank());
 		    });
 		    this.emitter.emit(_emitter2.default.events.READY);
 		  }
@@ -2869,7 +2879,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		Quill.events = _emitter2.default.events;
 		Quill.sources = _emitter2.default.sources;
-		Quill.version = ("1.0.0-beta.1");
+		Quill.version = ("1.0.0-beta.2");
 	
 		Quill.imports = {
 		  'delta': _delta2.default,
@@ -4393,11 +4403,33 @@ return /******/ (function(modules) { // webpackBootstrap
 		      this.formatText(index, text.length, formats, source);
 		    }
 		  }, {
+		    key: 'isBlank',
+		    value: function isBlank() {
+		      if (this.scroll.children.length == 0) return true;
+		      if (this.scroll.children.length > 1) return false;
+		      var child = this.scroll.children.head;
+		      return child.length() <= 1 && Object.keys(child.formats()).length == 0;
+		    }
+		  }, {
 		    key: 'removeFormat',
 		    value: function removeFormat(index, length) {
-		      var contents = this.getContents(index, length);
 		      var text = this.getText(index, length);
-		      var diff = contents.diff(new _delta2.default().insert(text));
+	
+		      var _scroll$line3 = this.scroll.line(index + length);
+	
+		      var _scroll$line4 = _slicedToArray(_scroll$line3, 2);
+	
+		      var line = _scroll$line4[0];
+		      var offset = _scroll$line4[1];
+	
+		      var suffixLength = 0,
+		          suffix = new _delta2.default();
+		      if (line != null) {
+		        suffixLength = line.length() - offset;
+		        suffix = line.delta().slice(offset, offset + suffixLength - 1).insert('\n');
+		      }
+		      var contents = this.getContents(index, length + suffixLength);
+		      var diff = contents.diff(new _delta2.default().insert(text).concat(suffix));
 		      var delta = new _delta2.default().retain(index).concat(diff);
 		      this.applyDelta(delta);
 		    }
@@ -5474,7 +5506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
 		});
-		exports.default = exports.Range = exports.findLeaf = undefined;
+		exports.default = exports.Range = undefined;
 	
 		var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 	
@@ -5483,6 +5515,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		var _parchment = __webpack_require__(3);
 	
 		var _parchment2 = _interopRequireDefault(_parchment);
+	
+		var _clone = __webpack_require__(37);
+	
+		var _clone2 = _interopRequireDefault(_clone);
 	
 		var _deepEqual = __webpack_require__(23);
 	
@@ -5529,16 +5565,16 @@ return /******/ (function(modules) { // webpackBootstrap
 		    this.cursor = _parchment2.default.create('cursor', this);
 		    // savedRange is last non-null range
 		    this.lastRange = this.savedRange = new Range(0, 0);
-		    ['keyup', 'mouseup', 'touchend', 'touchleave'].forEach(function (eventName) {
+		    ['keyup', 'mouseup', 'touchend', 'touchleave', 'focus', 'blur'].forEach(function (eventName) {
 		      _this.root.addEventListener(eventName, function () {
 		        // When range used to be a selection and user click within the selection,
 		        // the range now being a cursor has not updated yet without setTimeout
-		        setTimeout(_this.update.bind(_this, _emitter2.default.sources.USER), 1);
+		        setTimeout(_this.update.bind(_this, _emitter2.default.sources.USER), 100);
 		      });
 		    });
 		    this.emitter.on(_emitter2.default.events.TEXT_CHANGE, function (delta) {
 		      if (delta.length() > 0) {
-		        _this.update(_emitter2.default.sources.SILENT);
+		        setTimeout(_this.update.bind(_this, _emitter2.default.sources.SILENT), 1);
 		      }
 		    });
 		    this.emitter.on(_emitter2.default.events.SCROLL_BEFORE_UPDATE, function () {
@@ -5591,12 +5627,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		    value: function getBounds(index) {
 		      var length = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 		      var bounds = void 0;var node = void 0;
-		      var _findLeaf = findLeaf(this.scroll, index);
+		      var _scroll$leaf = this.scroll.leaf(index);
 	
-		      var _findLeaf2 = _slicedToArray(_findLeaf, 2);
+		      var _scroll$leaf2 = _slicedToArray(_scroll$leaf, 2);
 	
-		      var leaf = _findLeaf2[0];
-		      var offset = _findLeaf2[1];
+		      var leaf = _scroll$leaf2[0];
+		      var offset = _scroll$leaf2[1];
 	
 		      if (leaf == null) return null;
 	
@@ -5611,12 +5647,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		      if (length > 0) {
 		        range.setStart(node, offset);
 	
-		        var _findLeaf3 = findLeaf(this.scroll, index + length);
+		        var _scroll$leaf3 = this.scroll.leaf(index + length);
 	
-		        var _findLeaf4 = _slicedToArray(_findLeaf3, 2);
+		        var _scroll$leaf4 = _slicedToArray(_scroll$leaf3, 2);
 	
-		        leaf = _findLeaf4[0];
-		        offset = _findLeaf4[1];
+		        leaf = _scroll$leaf4[0];
+		        offset = _scroll$leaf4[1];
 	
 		        if (leaf == null) return null;
 	
@@ -5802,12 +5838,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		          var args = [];
 		          indexes.forEach(function (index, i) {
 		            var node = void 0;
-		            var _findLeaf5 = findLeaf(_this3.scroll, index);
+		            var _scroll$leaf5 = _this3.scroll.leaf(index);
 	
-		            var _findLeaf6 = _slicedToArray(_findLeaf5, 2);
+		            var _scroll$leaf6 = _slicedToArray(_scroll$leaf5, 2);
 	
-		            var leaf = _findLeaf6[0];
-		            var offset = _findLeaf6[1];
+		            var leaf = _scroll$leaf6[0];
+		            var offset = _scroll$leaf6[1];
 	
 		            var _leaf$position5 = leaf.position(offset, i !== 0);
 	
@@ -5848,7 +5884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		          this.cursor.restore();
 		        }
 		        if (source === _emitter2.default.sources.SILENT) return;
-		        this.emitter.emit(_emitter2.default.events.SELECTION_CHANGE, this.lastRange, source);
+		        this.emitter.emit(_emitter2.default.events.SELECTION_CHANGE, (0, _clone2.default)(this.lastRange), source);
 		      }
 		    }
 		  }]);
@@ -5871,16 +5907,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		  return parent.contains(descendant);
 		}
 	
-		function findLeaf(blot, index) {
-		  var path = blot.path(index);
-		  if (path.length > 0) {
-		    return path.pop();
-		  } else {
-		    return [null, -1];
-		  }
-		}
-	
-		exports.findLeaf = findLeaf;
 		exports.Range = Range;
 		exports.default = Selection;
 	
@@ -6277,12 +6303,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		  }, {
 		    key: 'insertBefore',
 		    value: function insertBefore(blot, ref) {
-		      if (blot.scope === _parchment2.default.Scope.INLINE_BLOT) {
+		      if (blot.statics.scope === _parchment2.default.Scope.INLINE_BLOT) {
 		        var wrapper = _parchment2.default.create(this.statics.defaultChild);
 		        wrapper.appendChild(blot);
 		        blot = wrapper;
 		      }
 		      _get(Object.getPrototypeOf(Scroll.prototype), 'insertBefore', this).call(this, blot, ref);
+		    }
+		  }, {
+		    key: 'leaf',
+		    value: function leaf(index) {
+		      return this.path(index).pop() || [null, -1];
 		    }
 		  }, {
 		    key: 'line',
@@ -6396,6 +6427,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		  function Clipboard(quill, options) {
 		    _classCallCheck(this, Clipboard);
+	
+		    if (options.matchers !== Clipboard.DEFAULTS.matchers) {
+		      options.matchers = Clipboard.DEFAULTS.matchers.concat(options.matchers);
+		    }
 	
 		    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Clipboard).call(this, quill, options));
 	
@@ -6626,10 +6661,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		    };
 	
 		    text = text.replace(/\s\s+/g, replacer.bind(replacer, true));
-		    if (node.previousSibling == null || isLine(node.previousSibling)) {
+		    if (node.previousSibling == null && isLine(node.parentNode) || node.previousSibling != null && isLine(node.previousSibling)) {
 		      text = text.replace(/^\s+/, replacer.bind(replacer, false));
 		    }
-		    if (node.nextSibling == null || isLine(node.nextSibling)) {
+		    if (node.nextSibling == null && isLine(node.parentNode) || node.nextSibling != null && isLine(node.nextSibling)) {
 		      text = text.replace(/\s+$/, replacer.bind(replacer, false));
 		    }
 		  }
@@ -6892,17 +6927,31 @@ return /******/ (function(modules) { // webpackBootstrap
 		    _this.options.bindings = (0, _extend2.default)({}, Keyboard.DEFAULTS.bindings, options.bindings);
 		    _this.bindings = {};
 		    Object.keys(_this.options.bindings).forEach(function (name) {
-		      var _this$options$binding = _slicedToArray(_this.options.bindings[name], 3);
+		      if (_this.options.bindings[name]) {
+		        var _this$options$binding = _slicedToArray(_this.options.bindings[name], 3);
 	
-		      var key = _this$options$binding[0];
-		      var context = _this$options$binding[1];
-		      var handler = _this$options$binding[2];
+		        var key = _this$options$binding[0];
+		        var context = _this$options$binding[1];
+		        var handler = _this$options$binding[2];
 	
-		      _this.addBinding(key, context, handler);
+		        _this.addBinding(key, context, handler);
+		      }
 		    });
 		    _this.addBinding({ key: Keyboard.keys.ENTER, shiftKey: null }, handleEnter);
-		    _this.addBinding({ key: Keyboard.keys.BACKSPACE }, makeDeleteHanlder(true));
-		    _this.addBinding({ key: Keyboard.keys.DELETE }, makeDeleteHanlder(false));
+		    _this.addBinding({ key: Keyboard.keys.ENTER, metaKey: null, altKey: null }, function () {});
+		    _this.addBinding({ key: Keyboard.keys.BACKSPACE }, { collapsed: true, prefix: /^$/ }, function (range) {
+		      if (range.index === 0) return;
+		      this.quill.deleteText(range.index - 1, 1, _quill2.default.sources.USER);
+		      this.quill.setSelection(range.index - 1, _quill2.default.sources.SILENT);
+		      this.quill.selection.scrollIntoView();
+		    });
+		    _this.addBinding({ key: Keyboard.keys.DELETE }, { collapsed: true, suffix: /^$/ }, function (range) {
+		      if (range.index >= this.quill.getLength() - 1) return;
+		      this.quill.deleteText(range.index, 1, _quill2.default.sources.USER);
+		      this.quill.setSelection(range.index, _quill2.default.sources.SILENT);
+		    });
+		    _this.addBinding({ key: Keyboard.keys.BACKSPACE }, { collapsed: false }, handleDelete);
+		    _this.addBinding({ key: Keyboard.keys.DELETE }, { collapsed: false }, handleDelete);
 		    _this.listen();
 		    return _this;
 		  }
@@ -6935,7 +6984,38 @@ return /******/ (function(modules) { // webpackBootstrap
 		        if (bindings.length === 0) return;
 		        var range = _this2.quill.getSelection();
 		        if (range == null) return; // implies we do not have focus
-		        var format = null;
+	
+		        var _quill$scroll$line = _this2.quill.scroll.line(range.index);
+	
+		        var _quill$scroll$line2 = _slicedToArray(_quill$scroll$line, 2);
+	
+		        var line = _quill$scroll$line2[0];
+		        var offset = _quill$scroll$line2[1];
+	
+		        var _quill$scroll$leaf = _this2.quill.scroll.leaf(range.index);
+	
+		        var _quill$scroll$leaf2 = _slicedToArray(_quill$scroll$leaf, 2);
+	
+		        var leafStart = _quill$scroll$leaf2[0];
+		        var offsetStart = _quill$scroll$leaf2[1];
+	
+		        var _ref = range.length === 0 ? [leafStart, offsetStart] : _this2.quill.scroll.leaf(range.index + range.length);
+	
+		        var _ref2 = _slicedToArray(_ref, 2);
+	
+		        var leafEnd = _ref2[0];
+		        var offsetEnd = _ref2[1];
+	
+		        var prefixText = leafStart instanceof _parchment2.default.Text ? leafStart.value().slice(0, offsetStart) : '';
+		        var suffixText = leafEnd instanceof _parchment2.default.Text ? leafEnd.value().slice(offsetEnd) : '';
+		        var curContext = {
+		          collapsed: range.length === 0,
+		          empty: range.length === 0 && line.length() <= 1,
+		          format: _this2.quill.getFormat(range),
+		          offset: offset,
+		          prefix: prefixText,
+		          suffix: suffixText
+		        };
 		        var prevented = bindings.some(function (tuple) {
 		          var _tuple = _slicedToArray(tuple, 3);
 	
@@ -6943,16 +7023,29 @@ return /******/ (function(modules) { // webpackBootstrap
 		          var context = _tuple[1];
 		          var handler = _tuple[2];
 	
-		          if (context.collapsed === true && range.length > 0) return false;
-		          if (context.collapsed === false && range.length === 0) return false;
-		          if (context.format) {
-		            format = format || _this2.quill.getFormat(range);
-		            var formatsMatch = Object.keys(context.format).every(function (name) {
-		              return context.format[name] === true && format[name] != null || context.format[name] === false && format[name] == null || (0, _deepEqual2.default)(context.format[name], format[name]);
-		            });
-		            if (!formatsMatch) return false;
+		          if (context.collapsed != null && context.collapsed !== curContext.collapsed) return false;
+		          if (context.empty != null && context.empty !== curContext.empty) return false;
+		          if (context.offset != null && context.offset !== curContext.offset) return false;
+		          if (Array.isArray(context.format)) {
+		            // any format is present
+		            if (context.format.every(function (name) {
+		              return curContext.format[name] == null;
+		            })) {
+		              return false;
+		            }
+		          } else if (_typeof(context.format) === 'object') {
+		            // all formats must match
+		            if (!Object.keys(context.format).every(function (name) {
+		              if (context.format[name] === true) return curContext.format[name] != null;
+		              if (context.format[name] === false) return curContext.format[name] == null;
+		              return (0, _deepEqual2.default)(context.format[name], curContext.format[name]);
+		            })) {
+		              return false;
+		            }
 		          }
-		          return handler.call(_this2, range) !== true;
+		          if (context.prefix != null && !context.prefix.test(curContext.prefix)) return false;
+		          if (context.suffix != null && !context.suffix.test(curContext.suffix)) return false;
+		          return handler.call(_this2, range, curContext) !== true;
 		        });
 		        if (prevented) {
 		          evt.preventDefault();
@@ -6984,68 +7077,62 @@ return /******/ (function(modules) { // webpackBootstrap
 		    'remove bold': makeFormatHandler('bold', false),
 		    'remove italic': makeFormatHandler('italic', false),
 		    'remove underline': makeFormatHandler('underline', false),
-		    'indent': makeIndentHanlder(true),
-		    'outdent': makeIndentHanlder(false),
+		    'indent': [
+		    // highlight tab or tab at beginning of list, indent or blockquote
+		    { key: Keyboard.keys.TAB }, { format: ['blockquote', 'indent', 'list'] }, function (range, context) {
+		      if (context.collapsed && context.offset !== 0) return true;
+		      this.quill.format('indent', '+1', _quill2.default.sources.USER);
+		    }],
+		    'outdent': [{ key: Keyboard.keys.TAB, shiftKey: true }, { format: ['blockquote', 'indent', 'list'] },
+		    // highlight tab or tab at beginning of list, indent or blockquote
+		    function (range, context) {
+		      if (context.collapsed && context.offset !== 0) return true;
+		      this.quill.format('indent', '-1', _quill2.default.sources.USER);
+		    }],
+		    'outdent backspace': [{ key: Keyboard.keys.BACKSPACE }, { collapsed: true, format: ['blockquote', 'indent', 'list'], offset: 0 }, function (range, context) {
+		      if (context.format.indent != null) {
+		        this.quill.format('indent', '-1', _quill2.default.sources.USER);
+		      } else if (context.format.blockquote != null) {
+		        this.quill.format('blockquote', false, _quill2.default.sources.USER);
+		      } else if (context.format.list != null) {
+		        this.quill.format('list', false, _quill2.default.sources.USER);
+		      }
+		    }],
 		    'tab': [{ key: Keyboard.keys.TAB, shiftKey: null }, { collapsed: true }, function (range) {
 		      this.quill.insertText(range.index, '\t', _quill2.default.sources.USER);
 		      this.quill.setSelection(range.index + 1, _quill2.default.sources.SILENT);
-		      return false;
+		    }],
+		    'enter list': [{ key: Keyboard.keys.ENTER }, { collapsed: true, format: ['list'], empty: true }, function (range) {
+		      this.quill.format('list', false);
+		    }],
+		    'enter header': [{ key: Keyboard.keys.ENTER }, { collapsed: true, format: ['header'], suffix: /^$/ }, function (range) {
+		      this.quill.scroll.insertAt(range.index, '\n');
+		      this.quill.formatText(range.index + 1, 1, 'header', false, _quill2.default.sources.USER);
+		      this.quill.setSelection(range.index + 1, _quill2.default.sources.SILENT);
+		      this.quill.selection.scrollIntoView();
+		    }],
+		    'create list': [{ key: ' ' }, { collapsed: true, format: { list: false }, prefix: /^(1\.|-)$/ }, function (range, context) {
+		      var length = context.prefix.length;
+		      this.quill.scroll.deleteAt(range.index - length, length);
+		      this.quill.formatLine(range.index - length, 1, 'list', length === 1 ? 'bullet' : 'ordered', _quill2.default.sources.USER);
+		      this.quill.setSelection(range.index - length, _quill2.default.sources.SILENT);
 		    }]
 		  }
 		};
 	
 		function handleEnter(range) {
-		  var _this3 = this;
-	
-		  var formats = this.quill.getFormat(range);
-		  var lineFormats = Object.keys(formats).reduce(function (lineFormats, format) {
-		    if (_parchment2.default.query(format, _parchment2.default.Scope.BLOCK)) {
-		      lineFormats[format] = formats[format];
-		    }
-		    return lineFormats;
-		  }, {});
-		  var added = 1;
-		  var delta = new _delta2.default().retain(range.index).insert('\n', lineFormats);
-		  delta.delete(range.length);
-		  this.quill.updateContents(delta, _quill2.default.sources.USER);
-		  this.quill.setSelection(range.index + added, _quill2.default.sources.SILENT);
-		  Object.keys(formats).forEach(function (name) {
-		    if (lineFormats[name] == null) {
-		      _this3.quill.format(name, formats[name]);
-		    }
-		  });
+		  if (range.length > 0) {
+		    this.quill.scroll.deleteAt(range.index, range.length); // So we do not trigger text-change
+		  }
+		  this.quill.insertText(range.index, '\n', _quill2.default.sources.USER);
+		  this.quill.setSelection(range.index + 1, _quill2.default.sources.SILENT);
 		  this.quill.selection.scrollIntoView();
-		  return false;
 		}
 	
-		function makeDeleteHanlder(isBackspace) {
-		  return function (range) {
-		    if (range.length > 0) {
-		      this.quill.deleteText(range, _quill2.default.sources.USER);
-		    } else if (!isBackspace) {
-		      this.quill.deleteText(range.index, 1, _quill2.default.sources.USER);
-		    } else {
-		      var _quill$scroll$descend = this.quill.scroll.descendant(_block2.default, range.index);
-	
-		      var _quill$scroll$descend2 = _slicedToArray(_quill$scroll$descend, 2);
-	
-		      var line = _quill$scroll$descend2[0];
-		      var offset = _quill$scroll$descend2[1];
-	
-		      var formats = this.quill.getFormat(range);
-		      if (line != null && offset === 0 && (formats['indent'] || formats['list'])) {
-		        if (formats['indent'] != null) {
-		          line.format('indent', parseInt(formats['indent']) - 1, _quill2.default.sources.USER);
-		        } else {
-		          line.format('list', false);
-		        }
-		      } else {
-		        this.quill.deleteText(range.index - 1, 1, _quill2.default.sources.USER);
-		        range = new _selection.Range(Math.max(0, range.index - 1));
-		      }
-		    }
-		    this.quill.setSelection(range.index, _quill2.default.sources.SILENT);
-		  };
+		function handleDelete(range) {
+		  this.quill.deleteText(range, _quill2.default.sources.USER);
+		  this.quill.setSelection(range.index, _quill2.default.sources.SILENT);
+		  this.quill.selection.scrollIntoView();
 		}
 	
 		function makeFormatHandler(format, value) {
@@ -7058,21 +7145,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		    return false;
 		  };
 		  return [key, context, handler];
-		}
-	
-		function makeIndentHanlder(indent) {
-		  var handler = function handler(range) {
-		    var modifier = indent ? 1 : -1;
-		    this.quill.scroll.descendants(_block2.default, range.index, range.length).forEach(function (line) {
-		      var format = line.formats();
-		      var level = parseInt(format['indent'] || 0);
-		      line.format('indent', Math.max(0, level + modifier));
-		    });
-		    this.quill.update(_quill2.default.sources.USER);
-		    this.quill.setSelection(range, _quill2.default.sources.SILENT);
-		    return false;
-		  };
-		  return [{ key: Keyboard.keys.TAB, shiftKey: !indent }, { collapsed: false }, handler];
 		}
 	
 		function normalize(binding) {
@@ -7170,13 +7242,51 @@ return /******/ (function(modules) { // webpackBootstrap
 		});
 		exports.IndentClass = undefined;
 	
+		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+		var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
 		var _parchment = __webpack_require__(3);
 	
 		var _parchment2 = _interopRequireDefault(_parchment);
 	
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-		var IndentClass = new _parchment2.default.Attributor.Class('indent', 'ql-indent', {
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+		var IdentAttributor = function (_Parchment$Attributor) {
+		  _inherits(IdentAttributor, _Parchment$Attributor);
+	
+		  function IdentAttributor() {
+		    _classCallCheck(this, IdentAttributor);
+	
+		    return _possibleConstructorReturn(this, Object.getPrototypeOf(IdentAttributor).apply(this, arguments));
+		  }
+	
+		  _createClass(IdentAttributor, [{
+		    key: 'add',
+		    value: function add(node, value) {
+		      if (value === '+1' || value === '-1') {
+		        var indent = parseInt(this.value(node) || 0);
+		        value = value === '+1' ? indent + 1 : indent - 1;
+		      }
+		      if (value === 0) {
+		        this.remove(node);
+		        return true;
+		      } else {
+		        return _get(Object.getPrototypeOf(IdentAttributor.prototype), 'add', this).call(this, node, value);
+		      }
+		    }
+		  }]);
+	
+		  return IdentAttributor;
+		}(_parchment2.default.Attributor.Class);
+	
+		var IndentClass = new IdentAttributor('indent', 'ql-indent', {
 		  scope: _parchment2.default.Scope.BLOCK,
 		  whitelist: [1, 2, 3, 4, 5, 6, 7, 8]
 		});
@@ -7604,6 +7714,34 @@ return /******/ (function(modules) { // webpackBootstrap
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
 		});
+		exports.ImageAlignStyle = exports.ImageAlignClass = undefined;
+	
+		var _parchment = __webpack_require__(3);
+	
+		var _parchment2 = _interopRequireDefault(_parchment);
+	
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+		var config = {
+		  scope: _parchment2.default.Scope.BLOCK,
+		  whitelist: ['left', 'right']
+		};
+	
+		var ImageAlignClass = new _parchment2.default.Attributor.Class('image-align', 'ql-image-align', config);
+		var ImageAlignStyle = new _parchment2.default.Attributor.Style('image-align', 'float', config);
+	
+		exports.ImageAlignClass = ImageAlignClass;
+		exports.ImageAlignStyle = ImageAlignStyle;
+	
+	/***/ },
+	/* 58 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
 	
 		var _inline = __webpack_require__(35);
 	
@@ -7635,7 +7773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Bold;
 	
 	/***/ },
-	/* 58 */
+	/* 59 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7674,7 +7812,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Italic;
 	
 	/***/ },
-	/* 59 */
+	/* 60 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7753,7 +7891,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Link;
 	
 	/***/ },
-	/* 60 */
+	/* 61 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7816,7 +7954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Script;
 	
 	/***/ },
-	/* 61 */
+	/* 62 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7855,7 +7993,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Strike;
 	
 	/***/ },
-	/* 62 */
+	/* 63 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7894,7 +8032,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Underline;
 	
 	/***/ },
-	/* 63 */
+	/* 64 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7928,7 +8066,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		    return _possibleConstructorReturn(this, Object.getPrototypeOf(Formula).apply(this, arguments));
 		  }
 	
-		  _createClass(Formula, null, [{
+		  _createClass(Formula, [{
+		    key: 'index',
+		    value: function index(node, offset) {
+		      return 1;
+		    }
+		  }], [{
 		    key: 'create',
 		    value: function create(value) {
 		      var node = _get(Object.getPrototypeOf(Formula), 'create', this).call(this, value);
@@ -7936,7 +8079,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		        katex.render(value, node);
 		        node.dataset.value = value;
 		      }
-		      node.setAttribute('contenteditable', false);
 		      return node;
 		    }
 		  }, {
@@ -7956,7 +8098,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Formula;
 	
 	/***/ },
-	/* 64 */
+	/* 65 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -7973,7 +8115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _embed2 = _interopRequireDefault(_embed);
 	
-		var _link = __webpack_require__(59);
+		var _link = __webpack_require__(60);
 	
 		var _link2 = _interopRequireDefault(_link);
 	
@@ -8030,7 +8172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Image;
 	
 	/***/ },
-	/* 65 */
+	/* 66 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -8045,7 +8187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _block = __webpack_require__(32);
 	
-		var _link = __webpack_require__(59);
+		var _link = __webpack_require__(60);
 	
 		var _link2 = _interopRequireDefault(_link);
 	
@@ -8060,12 +8202,32 @@ return /******/ (function(modules) { // webpackBootstrap
 		var Video = function (_BlockEmbed) {
 		  _inherits(Video, _BlockEmbed);
 	
-		  _createClass(Video, null, [{
+		  function Video() {
+		    _classCallCheck(this, Video);
+	
+		    return _possibleConstructorReturn(this, Object.getPrototypeOf(Video).apply(this, arguments));
+		  }
+	
+		  _createClass(Video, [{
+		    key: 'format',
+		    value: function format(name, value) {
+		      if (name === 'height' || name === 'width') {
+		        if (value) {
+		          this.domNode.setAttribute(name, value);
+		        } else {
+		          this.domNode.removeAttribute(name);
+		        }
+		      } else {
+		        _get(Object.getPrototypeOf(Video.prototype), 'format', this).call(this, name, value);
+		      }
+		    }
+		  }], [{
 		    key: 'create',
 		    value: function create(value) {
 		      var node = _get(Object.getPrototypeOf(Video), 'create', this).call(this, value);
+		      node.setAttribute('frameborder', '0');
+		      node.setAttribute('allowfullscreen', true);
 		      node.setAttribute('src', this.sanitize(value));
-		      node.setAttribute('controls', true);
 		      return node;
 		    }
 		  }, {
@@ -8088,45 +8250,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		    }
 		  }]);
 	
-		  function Video(domNode) {
-		    _classCallCheck(this, Video);
-	
-		    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Video).call(this, domNode));
-	
-		    _this.domNode.addEventListener('mouseenter', function () {
-		      _this.domNode.setAttribute('controls', true);
-		    });
-		    _this.domNode.addEventListener('mouseleave', function () {
-		      _this.domNode.removeAttribute('controls');
-		    });
-		    return _this;
-		  }
-	
-		  _createClass(Video, [{
-		    key: 'format',
-		    value: function format(name, value) {
-		      if (name === 'height' || name === 'width') {
-		        if (value) {
-		          this.domNode.setAttribute(name, value);
-		        } else {
-		          this.domNode.removeAttribute(name);
-		        }
-		      } else {
-		        _get(Object.getPrototypeOf(Video.prototype), 'format', this).call(this, name, value);
-		      }
-		    }
-		  }]);
-	
 		  return Video;
 		}(_block.BlockEmbed);
 	
 		Video.blotName = 'video';
-		Video.tagName = 'VIDEO';
+		Video.className = 'ql-video';
+		Video.tagName = 'IFRAME';
 	
 		exports.default = Video;
 	
 	/***/ },
-	/* 66 */
+	/* 67 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -8218,6 +8352,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		      });
 		    }
 		  }], [{
+		    key: 'create',
+		    value: function create(value) {
+		      var domNode = _get(Object.getPrototypeOf(CodeBlock), 'create', this).call(this, value);
+		      domNode.setAttribute('spellcheck', false);
+		      return domNode;
+		    }
+		  }, {
 		    key: 'formats',
 		    value: function formats(domNode) {
 		      return true;
@@ -8234,7 +8375,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = CodeBlock;
 	
 	/***/ },
-	/* 67 */
+	/* 68 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -8253,7 +8394,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _module2 = _interopRequireDefault(_module);
 	
-		var _image = __webpack_require__(64);
+		var _image = __webpack_require__(65);
 	
 		var _image2 = _interopRequireDefault(_image);
 	
@@ -8355,7 +8496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = ImageTooltip;
 	
 	/***/ },
-	/* 68 */
+	/* 69 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -8378,7 +8519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _selection = __webpack_require__(39);
 	
-		var _link = __webpack_require__(59);
+		var _link = __webpack_require__(60);
 	
 		var _link2 = _interopRequireDefault(_link);
 	
@@ -8386,7 +8527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _keyboard2 = _interopRequireDefault(_keyboard);
 	
-		var _tooltip = __webpack_require__(69);
+		var _tooltip = __webpack_require__(70);
 	
 		var _tooltip2 = _interopRequireDefault(_tooltip);
 	
@@ -8410,7 +8551,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		    _this.container = _this.quill.addContainer('ql-link-tooltip');
 		    _this.container.innerHTML = _this.options.template;
-		    _this.tooltip = new _tooltip2.default(_this.container, quill.theme.options.bounds);
+		    _this.tooltip = new _tooltip2.default(_this.container, {
+		      bounds: quill.theme.options.bounds,
+		      scroll: quill.root
+		    });
 		    _this.hide();
 		    _this.preview = _this.container.querySelector('a.ql-preview');
 		    _this.textbox = _this.container.querySelector('input[type=text]');
@@ -8500,6 +8644,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		        preview = this.link.formats()['link'];
 		      } else {
 		        preview = this.quill.getText(range);
+		        if (/^\S+@\S+\.\S+$/.test(preview)) {
+		          preview = 'mailto:' + preview;
+		        }
 		      }
 		      this.preview.textContent = this.textbox.value = preview;
 		      this.preview.setAttribute('href', preview);
@@ -8518,7 +8665,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = LinkTooltip;
 	
 	/***/ },
-	/* 69 */
+	/* 70 */
 	/***/ function(module, exports) {
 	
 		'use strict';
@@ -8532,12 +8679,21 @@ return /******/ (function(modules) { // webpackBootstrap
 		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 		var Tooltip = function () {
-		  function Tooltip(root, container) {
+		  function Tooltip(root) {
+		    var _this = this;
+	
+		    var containers = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	
 		    _classCallCheck(this, Tooltip);
 	
-		    this.container = container;
+		    this.containers = containers;
 		    this.root = root;
 		    this.root.classList.add('ql-tooltip');
+		    if (this.containers.scroll instanceof HTMLElement) {
+		      this.containers.scroll.addEventListener('scroll', function () {
+		        _this.root.style.marginTop = -1 * _this.containers.scroll.scrollTop + 'px';
+		      });
+		    }
 		  }
 	
 		  _createClass(Tooltip, [{
@@ -8547,10 +8703,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		      var left = reference.left + reference.width / 2 - this.root.offsetWidth / 2;
 		      var top = reference.bottom + offset;
+		      if (this.containers.scroll instanceof HTMLElement) {
+		        top += this.containers.scroll.scrollTop;
+		      }
 		      this.root.style.left = left + 'px';
 		      this.root.style.top = top + 'px';
-		      if (!(this.container instanceof HTMLElement)) return;
-		      var containerBounds = this.container.getBoundingClientRect();
+		      if (!(this.containers.bounds instanceof HTMLElement)) return;
+		      var containerBounds = this.containers.bounds.getBoundingClientRect();
 		      var rootBounds = this.root.getBoundingClientRect();
 		      var shift = 0;
 		      if (rootBounds.right > containerBounds.right) {
@@ -8586,7 +8745,146 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Tooltip;
 	
 	/***/ },
-	/* 70 */
+	/* 71 */
+	/***/ function(module, exports, __webpack_require__) {
+	
+		'use strict';
+	
+		Object.defineProperty(exports, "__esModule", {
+		  value: true
+		});
+		exports.default = exports.CodeToken = exports.CodeBlock = undefined;
+	
+		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+		var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+	
+		var _parchment = __webpack_require__(3);
+	
+		var _parchment2 = _interopRequireDefault(_parchment);
+	
+		var _quill = __webpack_require__(19);
+	
+		var _quill2 = _interopRequireDefault(_quill);
+	
+		var _module = __webpack_require__(38);
+	
+		var _module2 = _interopRequireDefault(_module);
+	
+		var _code = __webpack_require__(67);
+	
+		var _code2 = _interopRequireDefault(_code);
+	
+		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+		var SyntaxCodeBlock = function (_CodeBlock) {
+		  _inherits(SyntaxCodeBlock, _CodeBlock);
+	
+		  function SyntaxCodeBlock() {
+		    _classCallCheck(this, SyntaxCodeBlock);
+	
+		    return _possibleConstructorReturn(this, Object.getPrototypeOf(SyntaxCodeBlock).apply(this, arguments));
+		  }
+	
+		  _createClass(SyntaxCodeBlock, [{
+		    key: 'format',
+		    value: function format(name, value) {
+		      if (name === this.statics.blotName && !value) {
+		        this.domNode.textContent = this.domNode.textContent;
+		        this.attach();
+		      }
+		      _get(Object.getPrototypeOf(SyntaxCodeBlock.prototype), 'format', this).call(this, name, value);
+		    }
+		  }, {
+		    key: 'highlight',
+		    value: function highlight() {
+		      if (this.cachedHTML !== this.domNode.innerHTML) {
+		        var text = this.domNode.textContent;
+		        if (text.trim().length > 0 || this.cachedHTML == null) {
+		          this.domNode.textContent = text;
+		          hljs.highlightBlock(this.domNode);
+		          this.attach();
+		        }
+		        this.cachedHTML = this.domNode.innerHTML;
+		      }
+		    }
+		  }], [{
+		    key: 'create',
+		    value: function create(value) {
+		      var domNode = _get(Object.getPrototypeOf(SyntaxCodeBlock), 'create', this).call(this, value);
+		      if (typeof value === 'string') {
+		        domNode.dataset.language = value;
+		      } else {
+		        domNode.dataset.language = SyntaxCodeBlock.DEFAULT_LANGUAGE;
+		      }
+		      domNode.classList.add(domNode.dataset.language);
+		      return domNode;
+		    }
+		  }, {
+		    key: 'formats',
+		    value: function formats(domNode) {
+		      return domNode.dataset.language || SyntaxCodeBlock.DEFAULT_LANGUAGE;
+		    }
+		  }]);
+	
+		  return SyntaxCodeBlock;
+		}(_code2.default);
+	
+		SyntaxCodeBlock.DEFAULT_LANGUAGE = 'javascript';
+	
+		var CodeToken = new _parchment2.default.Attributor.Class('token', 'hljs', {
+		  scope: _parchment2.default.Scope.INLINE
+		});
+	
+		var Syntax = function (_Module) {
+		  _inherits(Syntax, _Module);
+	
+		  function Syntax(quill, options) {
+		    _classCallCheck(this, Syntax);
+	
+		    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Syntax).call(this, quill, options));
+	
+		    var timer = null;
+		    _this2.quill.on(_quill2.default.events.SCROLL_OPTIMIZE, function () {
+		      if (timer != null) return;
+		      timer = setTimeout(function () {
+		        _this2.highlight();
+		        timer = null;
+		      }, 100);
+		    });
+		    _this2.highlight();
+		    return _this2;
+		  }
+	
+		  _createClass(Syntax, [{
+		    key: 'highlight',
+		    value: function highlight() {
+		      var range = this.quill.getSelection();
+		      this.quill.scroll.descendants(SyntaxCodeBlock).forEach(function (code) {
+		        code.highlight();
+		      });
+		      this.quill.update(_quill2.default.sources.SILENT);
+		      if (range != null) {
+		        this.quill.setSelection(range, _quill2.default.sources.SILENT);
+		      }
+		    }
+		  }]);
+	
+		  return Syntax;
+		}(_module2.default);
+	
+		exports.CodeBlock = SyntaxCodeBlock;
+		exports.CodeToken = CodeToken;
+		exports.default = Syntax;
+	
+	/***/ },
+	/* 72 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -8820,29 +9118,32 @@ return /******/ (function(modules) { // webpackBootstrap
 		      var range = this.quill.getSelection();
 		      if (range != null) {
 		        var startLength = this.quill.getLength();
-		        this.quill.removeFormat(range);
+		        this.quill.removeFormat(range, _quill2.default.sources.USER);
 		        var endLength = this.quill.getLength();
 		        // account for embed removals
-		        this.quill.setSelection(range.index, range.length - (startLength - endLength));
+		        this.quill.setSelection(range.index, range.length - (startLength - endLength), _quill2.default.sources.SILENT);
 		      }
 		    },
 		    direction: function direction(value) {
 		      var align = this.quill.getFormat()['align'];
 		      if (value === 'rtl' && align == null) {
-		        this.quill.format('align', 'right');
+		        this.quill.format('align', 'right', _quill2.default.sources.USER);
 		      } else if (!value && align === 'right') {
-		        this.quill.format('align', false);
+		        this.quill.format('align', false, _quill2.default.sources.USER);
 		      }
-		      this.quill.format('direction', value);
+		      this.quill.format('direction', value, _quill2.default.sources.USER);
+		    },
+		    'image-align': function imageAlign(value) {
+		      this.quill.format('image-align', value, _quill2.default.sources.USER);
 		    },
 		    indent: function indent(value) {
 		      var range = this.quill.getSelection();
 		      var formats = this.quill.getFormat(range);
 		      var indent = parseInt(formats.indent || 0);
 		      if (value === '+1') {
-		        this.quill.format('indent', indent + 1);
+		        this.quill.format('indent', indent + 1, _quill2.default.sources.USER);
 		      } else if (value === '-1') {
-		        this.quill.format('indent', indent - 1);
+		        this.quill.format('indent', indent - 1, _quill2.default.sources.USER);
 		      }
 		    }
 		  }
@@ -8852,347 +9153,221 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.addControls = addControls;
 	
 	/***/ },
-	/* 71 */
-	/***/ function(module, exports, __webpack_require__) {
-	
-		'use strict';
-	
-		Object.defineProperty(exports, "__esModule", {
-		  value: true
-		});
-		exports.default = exports.CodeToken = exports.CodeBlock = undefined;
-	
-		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-		var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-	
-		var _parchment = __webpack_require__(3);
-	
-		var _parchment2 = _interopRequireDefault(_parchment);
-	
-		var _quill = __webpack_require__(19);
-	
-		var _quill2 = _interopRequireDefault(_quill);
-	
-		var _module = __webpack_require__(38);
-	
-		var _module2 = _interopRequireDefault(_module);
-	
-		var _code = __webpack_require__(66);
-	
-		var _code2 = _interopRequireDefault(_code);
-	
-		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-		var HighlightCodeBlock = function (_CodeBlock) {
-		  _inherits(HighlightCodeBlock, _CodeBlock);
-	
-		  function HighlightCodeBlock() {
-		    _classCallCheck(this, HighlightCodeBlock);
-	
-		    return _possibleConstructorReturn(this, Object.getPrototypeOf(HighlightCodeBlock).apply(this, arguments));
-		  }
-	
-		  _createClass(HighlightCodeBlock, [{
-		    key: 'highlight',
-		    value: function highlight() {
-		      if (this.cachedHTML !== this.domNode.innerHTML) {
-		        var text = this.domNode.textContent;
-		        if (text.trim().length > 0 || this.cachedHTML == null) {
-		          this.domNode.textContent = this.domNode.textContent;
-		          hljs.highlightBlock(this.domNode);
-		          this.attach();
-		        }
-		        this.cachedHTML = this.domNode.innerHTML;
-		      }
-		    }
-		  }], [{
-		    key: 'create',
-		    value: function create(value) {
-		      var domNode = _get(Object.getPrototypeOf(HighlightCodeBlock), 'create', this).call(this, value);
-		      if (typeof value === 'string') {
-		        domNode.dataset.language = value;
-		      } else {
-		        domNode.dataset.language = HighlightCodeBlock.DEFAULT_LANGUAGE;
-		      }
-		      domNode.classList.add(domNode.dataset.language);
-		      return domNode;
-		    }
-		  }, {
-		    key: 'formats',
-		    value: function formats(domNode) {
-		      return domNode.dataset.language || HighlightCodeBlock.DEFAULT_LANGUAGE;
-		    }
-		  }]);
-	
-		  return HighlightCodeBlock;
-		}(_code2.default);
-	
-		HighlightCodeBlock.DEFAULT_LANGUAGE = 'javascript';
-	
-		var CodeToken = new _parchment2.default.Attributor.Class('token', 'hljs', {
-		  scope: _parchment2.default.Scope.INLINE
-		});
-	
-		var CodeHighlighter = function (_Module) {
-		  _inherits(CodeHighlighter, _Module);
-	
-		  function CodeHighlighter(quill, options) {
-		    _classCallCheck(this, CodeHighlighter);
-	
-		    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(CodeHighlighter).call(this, quill, options));
-	
-		    var timer = null;
-		    _this2.quill.on(_quill2.default.events.SCROLL_OPTIMIZE, function () {
-		      if (timer != null) return;
-		      timer = setTimeout(function () {
-		        _this2.highlight();
-		        timer = null;
-		      }, 100);
-		    });
-		    _this2.highlight();
-		    return _this2;
-		  }
-	
-		  _createClass(CodeHighlighter, [{
-		    key: 'highlight',
-		    value: function highlight() {
-		      var range = this.quill.getSelection();
-		      this.quill.scroll.descendants(HighlightCodeBlock).forEach(function (code) {
-		        code.highlight();
-		      });
-		      this.quill.update(_quill2.default.sources.SILENT);
-		      if (range != null) {
-		        this.quill.setSelection(range, _quill2.default.sources.SILENT);
-		      }
-		    }
-		  }]);
-	
-		  return CodeHighlighter;
-		}(_module2.default);
-	
-		exports.CodeBlock = HighlightCodeBlock;
-		exports.CodeToken = CodeToken;
-		exports.default = CodeHighlighter;
-	
-	/***/ },
-	/* 72 */
+	/* 73 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
 	
 		module.exports = {
 		  'align': {
-		    '': __webpack_require__(73),
-		    'center': __webpack_require__(74),
-		    'right': __webpack_require__(75),
-		    'justify': __webpack_require__(76)
+		    '': __webpack_require__(74),
+		    'center': __webpack_require__(75),
+		    'right': __webpack_require__(76),
+		    'justify': __webpack_require__(77)
 		  },
-		  'background': __webpack_require__(77),
-		  'blockquote': __webpack_require__(78),
-		  'bold': __webpack_require__(79),
-		  'clean': __webpack_require__(80),
-		  'code-block': __webpack_require__(81),
-		  'color': __webpack_require__(82),
+		  'image-align': {
+		    'left': __webpack_require__(74),
+		    'right': __webpack_require__(76)
+		  },
+		  'background': __webpack_require__(78),
+		  'blockquote': __webpack_require__(79),
+		  'bold': __webpack_require__(80),
+		  'clean': __webpack_require__(81),
+		  'code-block': __webpack_require__(82),
+		  'color': __webpack_require__(83),
 		  'direction': {
-		    '': __webpack_require__(83),
-		    'rtl': __webpack_require__(84)
+		    '': __webpack_require__(84),
+		    'rtl': __webpack_require__(85)
 		  },
-		  'formula': __webpack_require__(85),
-		  'italic': __webpack_require__(86),
+		  'formula': __webpack_require__(86),
+		  'italic': __webpack_require__(87),
 		  'header': {
-		    '1': __webpack_require__(87),
-		    '2': __webpack_require__(88)
+		    '1': __webpack_require__(88),
+		    '2': __webpack_require__(89)
 		  },
-		  'image': __webpack_require__(89),
+		  'image': __webpack_require__(90),
 		  'indent': {
-		    '+1': __webpack_require__(90),
-		    '-1': __webpack_require__(91)
+		    '+1': __webpack_require__(91),
+		    '-1': __webpack_require__(92)
 		  },
-		  'link': __webpack_require__(92),
+		  'link': __webpack_require__(93),
 		  'list': {
-		    'ordered': __webpack_require__(93),
-		    'bullet': __webpack_require__(94)
+		    'ordered': __webpack_require__(94),
+		    'bullet': __webpack_require__(95)
 		  },
 		  'script': {
-		    'sub': __webpack_require__(95),
-		    'super': __webpack_require__(96)
+		    'sub': __webpack_require__(96),
+		    'super': __webpack_require__(97)
 		  },
-		  'strike': __webpack_require__(97),
-		  'underline': __webpack_require__(98),
-		  'video': __webpack_require__(99)
+		  'strike': __webpack_require__(98),
+		  'underline': __webpack_require__(99),
+		  'video': __webpack_require__(100)
 		};
-	
-	/***/ },
-	/* 73 */
-	/***/ function(module, exports) {
-	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=3 x2=13 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=9 y1=4 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 74 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=14 x2=4 y1=14 y2=14></line> <line class=ql-stroke x1=12 x2=6 y1=4 y2=4></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=3 x2=13 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=9 y1=4 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 75 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=15 x2=5 y1=14 y2=14></line> <line class=ql-stroke x1=15 x2=9 y1=4 y2=4></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=14 x2=4 y1=14 y2=14></line> <line class=ql-stroke x1=12 x2=6 y1=4 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 76 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=15 x2=3 y1=14 y2=14></line> <line class=ql-stroke x1=15 x2=3 y1=4 y2=4></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=15 x2=5 y1=14 y2=14></line> <line class=ql-stroke x1=15 x2=9 y1=4 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 77 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <g class=\"ql-fill ql-color-label\"> <polygon points=\"6 6.868 6 6 5 6 5 7 5.942 7 6 6.868\"></polygon> <rect height=1 width=1 x=4 y=4></rect> <polygon points=\"6.817 5 6 5 6 6 6.38 6 6.817 5\"></polygon> <rect height=1 width=1 x=2 y=6></rect> <rect height=1 width=1 x=3 y=5></rect> <rect height=1 width=1 x=4 y=7></rect> <polygon points=\"4 11.439 4 11 3 11 3 12 3.755 12 4 11.439\"></polygon> <rect height=1 width=1 x=2 y=12></rect> <rect height=1 width=1 x=2 y=9></rect> <rect height=1 width=1 x=2 y=15></rect> <polygon points=\"4.63 10 4 10 4 11 4.192 11 4.63 10\"></polygon> <rect height=1 width=1 x=3 y=8></rect> <path d=M10.832,4.2L11,4.582V4H10.708A1.948,1.948,0,0,1,10.832,4.2Z></path> <path d=M7,4.582L7.168,4.2A1.929,1.929,0,0,1,7.292,4H7V4.582Z></path> <path d=M8,13H7.683l-0.351.8a1.933,1.933,0,0,1-.124.2H8V13Z></path> <rect height=1 width=1 x=12 y=2></rect> <rect height=1 width=1 x=11 y=3></rect> <path d=M9,3H8V3.282A1.985,1.985,0,0,1,9,3Z></path> <rect height=1 width=1 x=2 y=3></rect> <rect height=1 width=1 x=6 y=2></rect> <rect height=1 width=1 x=3 y=2></rect> <rect height=1 width=1 x=5 y=3></rect> <rect height=1 width=1 x=9 y=2></rect> <rect height=1 width=1 x=15 y=14></rect> <polygon points=\"13.447 10.174 13.469 10.225 13.472 10.232 13.808 11 14 11 14 10 13.37 10 13.447 10.174\"></polygon> <rect height=1 width=1 x=13 y=7></rect> <rect height=1 width=1 x=15 y=5></rect> <rect height=1 width=1 x=14 y=6></rect> <rect height=1 width=1 x=15 y=8></rect> <rect height=1 width=1 x=14 y=9></rect> <path d=M3.775,14H3v1H4V14.314A1.97,1.97,0,0,1,3.775,14Z></path> <rect height=1 width=1 x=14 y=3></rect> <polygon points=\"12 6.868 12 6 11.62 6 12 6.868\"></polygon> <rect height=1 width=1 x=15 y=2></rect> <rect height=1 width=1 x=12 y=5></rect> <rect height=1 width=1 x=13 y=4></rect> <polygon points=\"12.933 9 13 9 13 8 12.495 8 12.933 9\"></polygon> <rect height=1 width=1 x=9 y=14></rect> <rect height=1 width=1 x=8 y=15></rect> <path d=M6,14.926V15H7V14.316A1.993,1.993,0,0,1,6,14.926Z></path> <rect height=1 width=1 x=5 y=15></rect> <path d=M10.668,13.8L10.317,13H10v1h0.792A1.947,1.947,0,0,1,10.668,13.8Z></path> <rect height=1 width=1 x=11 y=15></rect> <path d=M14.332,12.2a1.99,1.99,0,0,1,.166.8H15V12H14.245Z></path> <rect height=1 width=1 x=14 y=15></rect> <rect height=1 width=1 x=15 y=11></rect> </g> <polyline class=ql-stroke points=\"5.5 13 9 5 12.5 13\"></polyline> <line class=ql-stroke x1=11.63 x2=6.38 y1=11 y2=11></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=15 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=15 x2=3 y1=14 y2=14></line> <line class=ql-stroke x1=15 x2=3 y1=4 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 78 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=\"ql-fill ql-stroke\" height=3 width=3 x=4 y=5></rect> <rect class=\"ql-fill ql-stroke\" height=3 width=3 x=11 y=5></rect> <path class=\"ql-even ql-fill ql-stroke\" d=M7,8c0,4.031-3,5-3,5></path> <path class=\"ql-even ql-fill ql-stroke\" d=M14,8c0,4.031-3,5-3,5></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <g class=\"ql-fill ql-color-label\"> <polygon points=\"6 6.868 6 6 5 6 5 7 5.942 7 6 6.868\"></polygon> <rect height=1 width=1 x=4 y=4></rect> <polygon points=\"6.817 5 6 5 6 6 6.38 6 6.817 5\"></polygon> <rect height=1 width=1 x=2 y=6></rect> <rect height=1 width=1 x=3 y=5></rect> <rect height=1 width=1 x=4 y=7></rect> <polygon points=\"4 11.439 4 11 3 11 3 12 3.755 12 4 11.439\"></polygon> <rect height=1 width=1 x=2 y=12></rect> <rect height=1 width=1 x=2 y=9></rect> <rect height=1 width=1 x=2 y=15></rect> <polygon points=\"4.63 10 4 10 4 11 4.192 11 4.63 10\"></polygon> <rect height=1 width=1 x=3 y=8></rect> <path d=M10.832,4.2L11,4.582V4H10.708A1.948,1.948,0,0,1,10.832,4.2Z></path> <path d=M7,4.582L7.168,4.2A1.929,1.929,0,0,1,7.292,4H7V4.582Z></path> <path d=M8,13H7.683l-0.351.8a1.933,1.933,0,0,1-.124.2H8V13Z></path> <rect height=1 width=1 x=12 y=2></rect> <rect height=1 width=1 x=11 y=3></rect> <path d=M9,3H8V3.282A1.985,1.985,0,0,1,9,3Z></path> <rect height=1 width=1 x=2 y=3></rect> <rect height=1 width=1 x=6 y=2></rect> <rect height=1 width=1 x=3 y=2></rect> <rect height=1 width=1 x=5 y=3></rect> <rect height=1 width=1 x=9 y=2></rect> <rect height=1 width=1 x=15 y=14></rect> <polygon points=\"13.447 10.174 13.469 10.225 13.472 10.232 13.808 11 14 11 14 10 13.37 10 13.447 10.174\"></polygon> <rect height=1 width=1 x=13 y=7></rect> <rect height=1 width=1 x=15 y=5></rect> <rect height=1 width=1 x=14 y=6></rect> <rect height=1 width=1 x=15 y=8></rect> <rect height=1 width=1 x=14 y=9></rect> <path d=M3.775,14H3v1H4V14.314A1.97,1.97,0,0,1,3.775,14Z></path> <rect height=1 width=1 x=14 y=3></rect> <polygon points=\"12 6.868 12 6 11.62 6 12 6.868\"></polygon> <rect height=1 width=1 x=15 y=2></rect> <rect height=1 width=1 x=12 y=5></rect> <rect height=1 width=1 x=13 y=4></rect> <polygon points=\"12.933 9 13 9 13 8 12.495 8 12.933 9\"></polygon> <rect height=1 width=1 x=9 y=14></rect> <rect height=1 width=1 x=8 y=15></rect> <path d=M6,14.926V15H7V14.316A1.993,1.993,0,0,1,6,14.926Z></path> <rect height=1 width=1 x=5 y=15></rect> <path d=M10.668,13.8L10.317,13H10v1h0.792A1.947,1.947,0,0,1,10.668,13.8Z></path> <rect height=1 width=1 x=11 y=15></rect> <path d=M14.332,12.2a1.99,1.99,0,0,1,.166.8H15V12H14.245Z></path> <rect height=1 width=1 x=14 y=15></rect> <rect height=1 width=1 x=15 y=11></rect> </g> <polyline class=ql-stroke points=\"5.5 13 9 5 12.5 13\"></polyline> <line class=ql-stroke x1=11.63 x2=6.38 y1=11 y2=11></line> </svg>";
 	
 	/***/ },
 	/* 79 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-stroke d=M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z></path> <path class=ql-stroke d=M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=\"ql-fill ql-stroke\" height=3 width=3 x=4 y=5></rect> <rect class=\"ql-fill ql-stroke\" height=3 width=3 x=11 y=5></rect> <path class=\"ql-even ql-fill ql-stroke\" d=M7,8c0,4.031-3,5-3,5></path> <path class=\"ql-even ql-fill ql-stroke\" d=M14,8c0,4.031-3,5-3,5></path> </svg>";
 	
 	/***/ },
 	/* 80 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg class=\"\" viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=5 x2=13 y1=3 y2=3></line> <line class=ql-stroke x1=6 x2=9.35 y1=12 y2=3></line> <line class=ql-stroke x1=11 x2=15 y1=11 y2=15></line> <line class=ql-stroke x1=15 x2=11 y1=11 y2=15></line> <rect class=ql-fill height=1 rx=0.5 ry=0.5 width=7 x=2 y=14></rect> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-stroke d=M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z></path> <path class=ql-stroke d=M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z></path> </svg>";
 	
 	/***/ },
 	/* 81 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <polyline class=\"ql-even ql-stroke\" points=\"5 7 3 9 5 11\"></polyline> <polyline class=\"ql-even ql-stroke\" points=\"13 7 15 9 13 11\"></polyline> <line class=ql-stroke x1=10 x2=8 y1=5 y2=13></line> </svg>";
+		module.exports = "<svg class=\"\" viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=5 x2=13 y1=3 y2=3></line> <line class=ql-stroke x1=6 x2=9.35 y1=12 y2=3></line> <line class=ql-stroke x1=11 x2=15 y1=11 y2=15></line> <line class=ql-stroke x1=15 x2=11 y1=11 y2=15></line> <rect class=ql-fill height=1 rx=0.5 ry=0.5 width=7 x=2 y=14></rect> </svg>";
 	
 	/***/ },
 	/* 82 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=\"ql-color-label ql-stroke ql-transparent\" x1=3 x2=15 y1=15 y2=15></line> <polyline class=ql-stroke points=\"5.5 11 9 3 12.5 11\"></polyline> <line class=ql-stroke x1=11.63 x2=6.38 y1=9 y2=9></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <polyline class=\"ql-even ql-stroke\" points=\"5 7 3 9 5 11\"></polyline> <polyline class=\"ql-even ql-stroke\" points=\"13 7 15 9 13 11\"></polyline> <line class=ql-stroke x1=10 x2=8 y1=5 y2=13></line> </svg>";
 	
 	/***/ },
 	/* 83 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=\"ql-stroke ql-fill\" points=\"3 11 5 9 3 7 3 11\"></polygon> <line class=\"ql-stroke ql-fill\" x1=15 x2=11 y1=4 y2=4></line> <path class=ql-fill d=M11,3a3,3,0,0,0,0,6h1V3H11Z></path> <rect class=ql-fill height=11 width=1 x=11 y=4></rect> <rect class=ql-fill height=11 width=1 x=13 y=4></rect> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=\"ql-color-label ql-stroke ql-transparent\" x1=3 x2=15 y1=15 y2=15></line> <polyline class=ql-stroke points=\"5.5 11 9 3 12.5 11\"></polyline> <line class=ql-stroke x1=11.63 x2=6.38 y1=9 y2=9></line> </svg>";
 	
 	/***/ },
 	/* 84 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=\"ql-stroke ql-fill\" points=\"15 12 13 10 15 8 15 12\"></polygon> <line class=\"ql-stroke ql-fill\" x1=9 x2=5 y1=4 y2=4></line> <path class=ql-fill d=M5,3A3,3,0,0,0,5,9H6V3H5Z></path> <rect class=ql-fill height=11 width=1 x=5 y=4></rect> <rect class=ql-fill height=11 width=1 x=7 y=4></rect> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=\"ql-stroke ql-fill\" points=\"3 11 5 9 3 7 3 11\"></polygon> <line class=\"ql-stroke ql-fill\" x1=15 x2=11 y1=4 y2=4></line> <path class=ql-fill d=M11,3a3,3,0,0,0,0,6h1V3H11Z></path> <rect class=ql-fill height=11 width=1 x=11 y=4></rect> <rect class=ql-fill height=11 width=1 x=13 y=4></rect> </svg>";
 	
 	/***/ },
 	/* 85 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-fill d=M11.759,2.482a2.561,2.561,0,0,0-3.53.607A7.656,7.656,0,0,0,6.8,6.2C6.109,9.188,5.275,14.677,4.15,14.927a1.545,1.545,0,0,0-1.3-.933A0.922,0.922,0,0,0,2,15.036S1.954,16,4.119,16s3.091-2.691,3.7-5.553c0.177-.826.36-1.726,0.554-2.6L8.775,6.2c0.381-1.421.807-2.521,1.306-2.676a1.014,1.014,0,0,0,1.02.56A0.966,0.966,0,0,0,11.759,2.482Z></path> <rect class=ql-fill height=1.6 rx=0.8 ry=0.8 width=5 x=5.15 y=6.2></rect> <path class=ql-fill d=M13.663,12.027a1.662,1.662,0,0,1,.266-0.276q0.193,0.069.456,0.138a2.1,2.1,0,0,0,.535.069,1.075,1.075,0,0,0,.767-0.3,1.044,1.044,0,0,0,.314-0.8,0.84,0.84,0,0,0-.238-0.619,0.8,0.8,0,0,0-.594-0.239,1.154,1.154,0,0,0-.781.3,4.607,4.607,0,0,0-.781,1q-0.091.15-.218,0.346l-0.246.38c-0.068-.288-0.137-0.582-0.212-0.885-0.459-1.847-2.494-.984-2.941-0.8-0.482.2-.353,0.647-0.094,0.529a0.869,0.869,0,0,1,1.281.585c0.217,0.751.377,1.436,0.527,2.038a5.688,5.688,0,0,1-.362.467,2.69,2.69,0,0,1-.264.271q-0.221-.08-0.471-0.147a2.029,2.029,0,0,0-.522-0.066,1.079,1.079,0,0,0-.768.3A1.058,1.058,0,0,0,9,15.131a0.82,0.82,0,0,0,.832.852,1.134,1.134,0,0,0,.787-0.3,5.11,5.11,0,0,0,.776-0.993q0.141-.219.215-0.34c0.046-.076.122-0.194,0.223-0.346a2.786,2.786,0,0,0,.918,1.726,2.582,2.582,0,0,0,2.376-.185c0.317-.181.212-0.565,0-0.494A0.807,0.807,0,0,1,14.176,15a5.159,5.159,0,0,1-.913-2.446l0,0Q13.487,12.24,13.663,12.027Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=\"ql-stroke ql-fill\" points=\"15 12 13 10 15 8 15 12\"></polygon> <line class=\"ql-stroke ql-fill\" x1=9 x2=5 y1=4 y2=4></line> <path class=ql-fill d=M5,3A3,3,0,0,0,5,9H6V3H5Z></path> <rect class=ql-fill height=11 width=1 x=5 y=4></rect> <rect class=ql-fill height=11 width=1 x=7 y=4></rect> </svg>";
 	
 	/***/ },
 	/* 86 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=13 y1=4 y2=4></line> <line class=ql-stroke x1=5 x2=11 y1=14 y2=14></line> <line class=ql-stroke x1=8 x2=10 y1=14 y2=4></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-fill d=M11.759,2.482a2.561,2.561,0,0,0-3.53.607A7.656,7.656,0,0,0,6.8,6.2C6.109,9.188,5.275,14.677,4.15,14.927a1.545,1.545,0,0,0-1.3-.933A0.922,0.922,0,0,0,2,15.036S1.954,16,4.119,16s3.091-2.691,3.7-5.553c0.177-.826.36-1.726,0.554-2.6L8.775,6.2c0.381-1.421.807-2.521,1.306-2.676a1.014,1.014,0,0,0,1.02.56A0.966,0.966,0,0,0,11.759,2.482Z></path> <rect class=ql-fill height=1.6 rx=0.8 ry=0.8 width=5 x=5.15 y=6.2></rect> <path class=ql-fill d=M13.663,12.027a1.662,1.662,0,0,1,.266-0.276q0.193,0.069.456,0.138a2.1,2.1,0,0,0,.535.069,1.075,1.075,0,0,0,.767-0.3,1.044,1.044,0,0,0,.314-0.8,0.84,0.84,0,0,0-.238-0.619,0.8,0.8,0,0,0-.594-0.239,1.154,1.154,0,0,0-.781.3,4.607,4.607,0,0,0-.781,1q-0.091.15-.218,0.346l-0.246.38c-0.068-.288-0.137-0.582-0.212-0.885-0.459-1.847-2.494-.984-2.941-0.8-0.482.2-.353,0.647-0.094,0.529a0.869,0.869,0,0,1,1.281.585c0.217,0.751.377,1.436,0.527,2.038a5.688,5.688,0,0,1-.362.467,2.69,2.69,0,0,1-.264.271q-0.221-.08-0.471-0.147a2.029,2.029,0,0,0-.522-0.066,1.079,1.079,0,0,0-.768.3A1.058,1.058,0,0,0,9,15.131a0.82,0.82,0,0,0,.832.852,1.134,1.134,0,0,0,.787-0.3,5.11,5.11,0,0,0,.776-0.993q0.141-.219.215-0.34c0.046-.076.122-0.194,0.223-0.346a2.786,2.786,0,0,0,.918,1.726,2.582,2.582,0,0,0,2.376-.185c0.317-.181.212-0.565,0-0.494A0.807,0.807,0,0,1,14.176,15a5.159,5.159,0,0,1-.913-2.446l0,0Q13.487,12.24,13.663,12.027Z></path> </svg>";
 	
 	/***/ },
 	/* 87 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=3 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=11 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=3 y1=9 y2=9></line> <line class=\"ql-stroke ql-thin\" x1=13.5 x2=15.5 y1=14.5 y2=14.5></line> <path class=ql-fill d=M14.5,15a0.5,0.5,0,0,1-.5-0.5V12.085l-0.276.138A0.5,0.5,0,0,1,13.053,12c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,15,11.5v3A0.5,0.5,0,0,1,14.5,15Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=13 y1=4 y2=4></line> <line class=ql-stroke x1=5 x2=11 y1=14 y2=14></line> <line class=ql-stroke x1=8 x2=10 y1=14 y2=4></line> </svg>";
 	
 	/***/ },
 	/* 88 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=3 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=11 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=3 y1=9 y2=9></line> <path class=\"ql-stroke ql-thin\" d=M15.5,14.5h-2c0-.234,1.85-1.076,1.85-2.234a0.959,0.959,0,0,0-1.85-.109></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=3 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=11 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=3 y1=9 y2=9></line> <line class=\"ql-stroke ql-thin\" x1=13.5 x2=15.5 y1=14.5 y2=14.5></line> <path class=ql-fill d=M14.5,15a0.5,0.5,0,0,1-.5-0.5V12.085l-0.276.138A0.5,0.5,0,0,1,13.053,12c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,15,11.5v3A0.5,0.5,0,0,1,14.5,15Z></path> </svg>";
 	
 	/***/ },
 	/* 89 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=ql-stroke height=10 width=12 x=3 y=4></rect> <circle class=ql-fill cx=6 cy=7 r=1></circle> <polyline class=\"ql-even ql-fill\" points=\"5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12\"></polyline> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=3 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=11 y1=4 y2=14></line> <line class=ql-stroke x1=11 x2=3 y1=9 y2=9></line> <path class=\"ql-stroke ql-thin\" d=M15.5,14.5h-2c0-.234,1.85-1.076,1.85-2.234a0.959,0.959,0,0,0-1.85-.109></path> </svg>";
 	
 	/***/ },
 	/* 90 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=9 x2=15 y1=9 y2=9></line> <polyline class=\"ql-fill ql-stroke\" points=\"3 7 3 11 5 9 3 7\"></polyline> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=ql-stroke height=10 width=12 x=3 y=4></rect> <circle class=ql-fill cx=6 cy=7 r=1></circle> <polyline class=\"ql-even ql-fill\" points=\"5 12 5 11 7 9 8 10 11 7 13 9 13 12 5 12\"></polyline> </svg>";
 	
 	/***/ },
 	/* 91 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=9 x2=15 y1=9 y2=9></line> <polyline class=ql-stroke points=\"5 7 5 11 3 9 5 7\"></polyline> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=9 x2=15 y1=9 y2=9></line> <polyline class=\"ql-fill ql-stroke\" points=\"3 7 3 11 5 9 3 7\"></polyline> </svg>";
 	
 	/***/ },
 	/* 92 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=11 y1=7 y2=11></line> <path class=\"ql-even ql-stroke\" d=M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z></path> <path class=\"ql-even ql-stroke\" d=M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=3 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=9 x2=15 y1=9 y2=9></line> <polyline class=ql-stroke points=\"5 7 5 11 3 9 5 7\"></polyline> </svg>";
 	
 	/***/ },
 	/* 93 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=7 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=7 x2=15 y1=14 y2=14></line> <line class=\"ql-stroke ql-thin\" x1=2.5 x2=4.5 y1=5.5 y2=5.5></line> <path class=ql-fill d=M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z></path> <path class=\"ql-stroke ql-thin\" d=M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156></path> <path class=\"ql-stroke ql-thin\" d=M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=11 y1=7 y2=11></line> <path class=\"ql-even ql-stroke\" d=M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z></path> <path class=\"ql-even ql-stroke\" d=M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z></path> </svg>";
 	
 	/***/ },
 	/* 94 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=6 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=6 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=6 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=3 y1=4 y2=4></line> <line class=ql-stroke x1=3 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=3 x2=3 y1=14 y2=14></line> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=7 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=7 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=7 x2=15 y1=14 y2=14></line> <line class=\"ql-stroke ql-thin\" x1=2.5 x2=4.5 y1=5.5 y2=5.5></line> <path class=ql-fill d=M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z></path> <path class=\"ql-stroke ql-thin\" d=M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156></path> <path class=\"ql-stroke ql-thin\" d=M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109></path> </svg>";
 	
 	/***/ },
 	/* 95 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=\"ql-stroke ql-thin\" d=M15.5,15.5h-3c0-.391,2.775-1.545,2.775-3.475a1.409,1.409,0,0,0-2.775-.182></path> <path class=ql-fill d=M6.215,4a6.281,6.281,0,0,0-3,.786,0.712,0.712,0,0,0-.287,1.048L3.112,6.192a0.663,0.663,0,0,0,1,.318,4,4,0,0,1,1.9-.543,1.523,1.523,0,0,1,1.7,1.685V7.877H7.345C5.3,7.877,2,8.345,2,11.135A2.857,2.857,0,0,0,5.031,14,3.337,3.337,0,0,0,7.9,12.2H7.937a1.954,1.954,0,0,0-.036.412v0.375a0.676,0.676,0,0,0,.735.786h0.61A0.681,0.681,0,0,0,10,12.989V7.8A3.47,3.47,0,0,0,6.215,4ZM7.74,9.675a2.394,2.394,0,0,1-2.1,2.509A1.265,1.265,0,0,1,4.26,10.929c0-1.423,1.955-1.61,3.1-1.61H7.74V9.675Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=ql-stroke x1=6 x2=15 y1=4 y2=4></line> <line class=ql-stroke x1=6 x2=15 y1=9 y2=9></line> <line class=ql-stroke x1=6 x2=15 y1=14 y2=14></line> <line class=ql-stroke x1=3 x2=3 y1=4 y2=4></line> <line class=ql-stroke x1=3 x2=3 y1=9 y2=9></line> <line class=ql-stroke x1=3 x2=3 y1=14 y2=14></line> </svg>";
 	
 	/***/ },
 	/* 96 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=\"ql-stroke ql-thin\" d=M15.5,7.5h-3c0-.391,2.775-1.545,2.775-3.475A1.409,1.409,0,0,0,12.5,3.841></path> <path class=ql-fill d=M6.215,4a6.281,6.281,0,0,0-3,.786,0.712,0.712,0,0,0-.287,1.048L3.112,6.192a0.663,0.663,0,0,0,1,.318,4,4,0,0,1,1.9-.543,1.523,1.523,0,0,1,1.7,1.685V7.877H7.345C5.3,7.877,2,8.345,2,11.135A2.857,2.857,0,0,0,5.031,14,3.337,3.337,0,0,0,7.9,12.2H7.937a1.954,1.954,0,0,0-.036.412v0.375a0.676,0.676,0,0,0,.735.786h0.61A0.681,0.681,0,0,0,10,12.989V7.8A3.47,3.47,0,0,0,6.215,4ZM7.74,9.675a2.394,2.394,0,0,1-2.1,2.509A1.265,1.265,0,0,1,4.26,10.929c0-1.423,1.955-1.61,3.1-1.61H7.74V9.675Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=\"ql-stroke ql-thin\" d=M15.5,15.5h-3c0-.391,2.775-1.545,2.775-3.475a1.409,1.409,0,0,0-2.775-.182></path> <path class=ql-fill d=M6.215,4a6.281,6.281,0,0,0-3,.786,0.712,0.712,0,0,0-.287,1.048L3.112,6.192a0.663,0.663,0,0,0,1,.318,4,4,0,0,1,1.9-.543,1.523,1.523,0,0,1,1.7,1.685V7.877H7.345C5.3,7.877,2,8.345,2,11.135A2.857,2.857,0,0,0,5.031,14,3.337,3.337,0,0,0,7.9,12.2H7.937a1.954,1.954,0,0,0-.036.412v0.375a0.676,0.676,0,0,0,.735.786h0.61A0.681,0.681,0,0,0,10,12.989V7.8A3.47,3.47,0,0,0,6.215,4ZM7.74,9.675a2.394,2.394,0,0,1-2.1,2.509A1.265,1.265,0,0,1,4.26,10.929c0-1.423,1.955-1.61,3.1-1.61H7.74V9.675Z></path> </svg>";
 	
 	/***/ },
 	/* 97 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=\"ql-stroke ql-thin\" x1=15.5 x2=2.5 y1=8.5 y2=9.5></line> <path class=ql-fill d=M9.007,8C6.542,7.791,6,7.519,6,6.5,6,5.792,7.283,5,9,5c1.571,0,2.765.679,2.969,1.309a1,1,0,0,0,1.9-.617C13.356,4.106,11.354,3,9,3,6.2,3,4,4.538,4,6.5a3.2,3.2,0,0,0,.5,1.843Z></path> <path class=ql-fill d=M8.984,10C11.457,10.208,12,10.479,12,11.5c0,0.708-1.283,1.5-3,1.5-1.571,0-2.765-.679-2.969-1.309a1,1,0,1,0-1.9.617C4.644,13.894,6.646,15,9,15c2.8,0,5-1.538,5-3.5a3.2,3.2,0,0,0-.5-1.843Z></path> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=\"ql-stroke ql-thin\" d=M15.5,7.5h-3c0-.391,2.775-1.545,2.775-3.475A1.409,1.409,0,0,0,12.5,3.841></path> <path class=ql-fill d=M6.215,4a6.281,6.281,0,0,0-3,.786,0.712,0.712,0,0,0-.287,1.048L3.112,6.192a0.663,0.663,0,0,0,1,.318,4,4,0,0,1,1.9-.543,1.523,1.523,0,0,1,1.7,1.685V7.877H7.345C5.3,7.877,2,8.345,2,11.135A2.857,2.857,0,0,0,5.031,14,3.337,3.337,0,0,0,7.9,12.2H7.937a1.954,1.954,0,0,0-.036.412v0.375a0.676,0.676,0,0,0,.735.786h0.61A0.681,0.681,0,0,0,10,12.989V7.8A3.47,3.47,0,0,0,6.215,4ZM7.74,9.675a2.394,2.394,0,0,1-2.1,2.509A1.265,1.265,0,0,1,4.26,10.929c0-1.423,1.955-1.61,3.1-1.61H7.74V9.675Z></path> </svg>";
 	
 	/***/ },
 	/* 98 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-stroke d=M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3></path> <rect class=ql-fill height=1 rx=0.5 ry=0.5 width=12 x=3 y=15></rect> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <line class=\"ql-stroke ql-thin\" x1=15.5 x2=2.5 y1=8.5 y2=9.5></line> <path class=ql-fill d=M9.007,8C6.542,7.791,6,7.519,6,6.5,6,5.792,7.283,5,9,5c1.571,0,2.765.679,2.969,1.309a1,1,0,0,0,1.9-.617C13.356,4.106,11.354,3,9,3,6.2,3,4,4.538,4,6.5a3.2,3.2,0,0,0,.5,1.843Z></path> <path class=ql-fill d=M8.984,10C11.457,10.208,12,10.479,12,11.5c0,0.708-1.283,1.5-3,1.5-1.571,0-2.765-.679-2.969-1.309a1,1,0,1,0-1.9.617C4.644,13.894,6.646,15,9,15c2.8,0,5-1.538,5-3.5a3.2,3.2,0,0,0-.5-1.843Z></path> </svg>";
 	
 	/***/ },
 	/* 99 */
 	/***/ function(module, exports) {
 	
-		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=ql-stroke height=12 width=12 x=3 y=3></rect> <rect class=ql-fill height=12 width=1 x=5 y=3></rect> <rect class=ql-fill height=12 width=1 x=12 y=3></rect> <rect class=ql-fill height=2 width=8 x=5 y=8></rect> <rect class=ql-fill height=1 width=3 x=3 y=5></rect> <rect class=ql-fill height=1 width=3 x=3 y=7></rect> <rect class=ql-fill height=1 width=3 x=3 y=10></rect> <rect class=ql-fill height=1 width=3 x=3 y=12></rect> <rect class=ql-fill height=1 width=3 x=12 y=5></rect> <rect class=ql-fill height=1 width=3 x=12 y=7></rect> <rect class=ql-fill height=1 width=3 x=12 y=10></rect> <rect class=ql-fill height=1 width=3 x=12 y=12></rect> </svg>";
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <path class=ql-stroke d=M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3></path> <rect class=ql-fill height=1 rx=0.5 ry=0.5 width=12 x=3 y=15></rect> </svg>";
 	
 	/***/ },
 	/* 100 */
+	/***/ function(module, exports) {
+	
+		module.exports = "<svg viewbox=\"0 0 18 18\"> <rect class=ql-stroke height=12 width=12 x=3 y=3></rect> <rect class=ql-fill height=12 width=1 x=5 y=3></rect> <rect class=ql-fill height=12 width=1 x=12 y=3></rect> <rect class=ql-fill height=2 width=8 x=5 y=8></rect> <rect class=ql-fill height=1 width=3 x=3 y=5></rect> <rect class=ql-fill height=1 width=3 x=3 y=7></rect> <rect class=ql-fill height=1 width=3 x=3 y=10></rect> <rect class=ql-fill height=1 width=3 x=3 y=12></rect> <rect class=ql-fill height=1 width=3 x=12 y=5></rect> <rect class=ql-fill height=1 width=3 x=12 y=7></rect> <rect class=ql-fill height=1 width=3 x=12 y=10></rect> <rect class=ql-fill height=1 width=3 x=12 y=12></rect> </svg>";
+	
+	/***/ },
+	/* 101 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9205,7 +9380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-		var _dropdown = __webpack_require__(101);
+		var _dropdown = __webpack_require__(102);
 	
 		var _dropdown2 = _interopRequireDefault(_dropdown);
 	
@@ -9224,9 +9399,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		    this.buildPicker();
 		    this.select.style.display = 'none';
 		    this.select.parentNode.insertBefore(this.container, this.select);
-		    this.label.addEventListener('click', function () {
+		    var expand = function expand(event) {
 		      _this.container.classList.toggle('ql-expanded');
-		    });
+		      event.preventDefault(); // prevent focus loss
+		    };
+		    this.label.addEventListener('mousedown', expand);
+		    this.label.addEventListener('touchstart', expand);
 		    this.select.addEventListener('change', this.update.bind(this));
 		  }
 	
@@ -9334,13 +9512,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = Picker;
 	
 	/***/ },
-	/* 101 */
+	/* 102 */
 	/***/ function(module, exports) {
 	
 		module.exports = "<svg viewbox=\"0 0 18 18\"> <polygon class=ql-stroke points=\"7 11 9 13 11 11 7 11\"></polygon> <polygon class=ql-stroke points=\"7 7 9 5 11 7 7 7\"></polygon> </svg>";
 	
 	/***/ },
-	/* 102 */
+	/* 103 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9353,7 +9531,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 	
-		var _picker = __webpack_require__(100);
+		var _picker = __webpack_require__(101);
 	
 		var _picker2 = _interopRequireDefault(_picker);
 	
@@ -9410,7 +9588,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = ColorPicker;
 	
 	/***/ },
-	/* 103 */
+	/* 104 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9423,7 +9601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 	
-		var _picker = __webpack_require__(100);
+		var _picker = __webpack_require__(101);
 	
 		var _picker2 = _interopRequireDefault(_picker);
 	
@@ -9465,7 +9643,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = IconPicker;
 	
 	/***/ },
-	/* 104 */
+	/* 105 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9484,15 +9662,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _keyboard2 = _interopRequireDefault(_keyboard);
 	
-		var _base = __webpack_require__(105);
+		var _base = __webpack_require__(106);
 	
 		var _base2 = _interopRequireDefault(_base);
 	
-		var _icons = __webpack_require__(72);
+		var _icons = __webpack_require__(73);
 	
 		var _icons2 = _interopRequireDefault(_icons);
 	
-		var _tooltip = __webpack_require__(69);
+		var _tooltip = __webpack_require__(70);
 	
 		var _tooltip2 = _interopRequireDefault(_tooltip);
 	
@@ -9570,7 +9748,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'extendToolbar',
 		    value: function extendToolbar(toolbar) {
 		      var container = this.quill.addContainer('ql-tooltip', this.quill.root);
-		      this.tooltip = new _tooltip2.default(container, this.options.bounds);
+		      this.tooltip = new _tooltip2.default(container, {
+		        bounds: this.options.bounds,
+		        scroll: this.quill.root
+		      });
 		      this.buildLinkEditor(toolbar);
 		      container.appendChild(toolbar.container);
 		      this.buildButtons([].slice.call(toolbar.container.querySelectorAll('button')));
@@ -9592,7 +9773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = BubbleTheme;
 	
 	/***/ },
-	/* 105 */
+	/* 106 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9613,11 +9794,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _theme2 = _interopRequireDefault(_theme);
 	
-		var _picker = __webpack_require__(100);
+		var _picker = __webpack_require__(101);
 	
 		var _picker2 = _interopRequireDefault(_picker);
 	
-		var _icons = __webpack_require__(72);
+		var _icons = __webpack_require__(73);
 	
 		var _icons2 = _interopRequireDefault(_icons);
 	
@@ -9684,7 +9865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		exports.default = BaseTheme;
 	
 	/***/ },
-	/* 106 */
+	/* 107 */
 	/***/ function(module, exports, __webpack_require__) {
 	
 		'use strict';
@@ -9699,23 +9880,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		var _emitter2 = _interopRequireDefault(_emitter);
 	
-		var _base = __webpack_require__(105);
+		var _base = __webpack_require__(106);
 	
 		var _base2 = _interopRequireDefault(_base);
 	
-		var _colorPicker = __webpack_require__(102);
+		var _colorPicker = __webpack_require__(103);
 	
 		var _colorPicker2 = _interopRequireDefault(_colorPicker);
 	
-		var _iconPicker = __webpack_require__(103);
+		var _iconPicker = __webpack_require__(104);
 	
 		var _iconPicker2 = _interopRequireDefault(_iconPicker);
 	
-		var _icons = __webpack_require__(72);
+		var _icons = __webpack_require__(73);
 	
 		var _icons2 = _interopRequireDefault(_icons);
 	
-		var _picker = __webpack_require__(100);
+		var _picker = __webpack_require__(101);
 	
 		var _picker2 = _interopRequireDefault(_picker);
 	
@@ -9768,9 +9949,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		        } else {
 		          picker = new _picker2.default(select);
 		        }
-		        picker.label.addEventListener('click', function () {
-		          quill.focus();
-		        });
 		        return picker;
 		      });
 		      var update = function update() {
@@ -9828,7 +10006,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	/******/ ])
 	});
 	;
-
 
 /***/ }
 /******/ ])
